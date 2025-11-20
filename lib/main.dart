@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Container Avanzado - William Morales y Julian Lancheros')),
+        appBar: AppBar(title: Text('Container Animado - William Morales y Julian Lancheros')),
         body: Center(
           child: ProductCard(),
         ),
@@ -34,36 +34,48 @@ class _ProductCardState extends State<ProductCard> {
           _isPressed = !_isPressed;
         });
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 400),  // Velocidad de animación
+        curve: Curves.easeOutBack,             // Movimiento suave y elegante
         width: 300,
         height: 200,
-        margin: EdgeInsets.all(20), // Espaciado externo
-        padding: EdgeInsets.all(16), // Espaciado interno
+        margin: EdgeInsets.all(20),
+        padding: EdgeInsets.all(16),
+
+        // Cambiamos decoración según estado
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue, Colors.purple], // Fondo degradado
+            colors: _isPressed
+                ? [Colors.pinkAccent, Colors.deepPurpleAccent] // Cambia el color al tocar
+                : [Colors.blue, Colors.purple],
           ),
-          border: Border.all(color: Colors.white, width: 2), // Borde blanco
-          borderRadius: BorderRadius.circular(20), // Esquinas redondeadas
+          border: Border.all(color: Colors.white, width: 2),
+          borderRadius: BorderRadius.circular(_isPressed ? 30 : 20), // Animar esquinas
           boxShadow: [
             BoxShadow(
               color: Colors.black26,
-              blurRadius: 10,
-              offset: Offset(0, 5), // Sombra sutil
+              blurRadius: _isPressed ? 20 : 10, // Más sombra si está presionado
+              offset: Offset(0, _isPressed ? 10 : 5),
             ),
           ],
         ),
-        transform: _isPressed
-            ? Matrix4.rotationZ(0.1) // Rotación al presionar
-            : Matrix4.identity(), // Sin transformación
+
+        // Animación de transformación
+        transform: Matrix4.rotationZ(_isPressed ? 0.1 : 0),
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.shopping_cart, size: 50, color: Colors.white),
+            Icon(Icons.shopping_cart,
+                size: 50, color: Colors.white),
             SizedBox(height: 10),
             Text(
               'Producto Especial',
-              style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: _isPressed ? 22 : 20, // Texto se agranda con animación
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Text(
               '¡Toca para ver magia!',

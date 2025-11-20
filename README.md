@@ -1,16 +1,16 @@
-# flutter2
+# Flutter Mini Proyectos ADSO
 
-A new Flutter project.
+Este repositorio contiene pequeños proyectos realizados en Flutter como práctica del tecnólogo ADSO (Análisis y Desarrollo de Software).
 
-## Getting Started
+## 📌 Proyecto incluido
 
-This project is a starting point for a Flutter application.
+### 🔹 Container Avanzado – Demo Interactiva  
+Este mini proyecto muestra el uso avanzado de Container, incluyendo:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Gradientes
+- Sombras
+- Bordes redondeados
+- Animación con GestureDetector
+- Transformaciones (Matrix4)
+- StatefulWidget para interacción
+- Container Animado
